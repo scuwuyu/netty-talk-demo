@@ -1,6 +1,7 @@
 package com.scuwuyu.talk.server;
 
 import io.netty.bootstrap.ServerBootstrap;
+import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -11,13 +12,22 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
  */
 public class ServerSide {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
+        try{
+            ServerBootstrap bootstrap = new ServerBootstrap();
+            bootstrap.group(bossGroup,workerGroup).channel(NioServerSocketChannel.class)
+                    .childHandler(new MyChannelInitializer());
 
-        ServerBootstrap bootstrap = new ServerBootstrap();
+            ChannelFuture channelFuture = bootstrap.bind(8093).sync();
 
-        bootstrap.group(bossGroup,workerGroup).channel(NioServerSocketChannel.class)
-                .childHandler(null);
+            channelFuture.channel().closeFuture().sync();
+        }finally {
+            bossGroup.shutdownGracefully();
+            workerGroup.shutdownGracefully();
+        }
+
+
     }
 }
