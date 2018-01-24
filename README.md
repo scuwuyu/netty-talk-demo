@@ -1,2 +1,3 @@
 # netty-talk-demo
-a talk demo of netty
+A talk demo of netty.
+Enjoy your coding.

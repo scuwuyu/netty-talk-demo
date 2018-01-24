@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="static/asset/js/lib/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<!--<form method="post" action="/wx/getPreAuth">-->
+    <!--<a href="https://mp.weixin.qq.com/cgi-bin/componentloginpage?component_appid=wxfd795ae97fb9aaf5&pre_auth_code=preauthcode@@@mpwVMAXow0QuEWvrWw0KpUK8-CbQVIPmVL_nlv50nlYUIbcOmXXB_QTN9I6_0jO8&redirect_uri=http://www.wxloong.com/wx/getLoginAuth">链接</a>-->
+<!--</form>-->
+
+<div style="margin: 20px 0;">
+    <a id="send" href="javascript:void(0)" style="">点击发送模板信息</a>
+
+    <a id="getPreAuth" href="" style="">授权链接</a>
+
+    <script type="text/javascript">
+        $("#send").click(function() {
+            $.post('/message/send', {authAppId:"wx392d7aa6f2a84687"});
+        });
+
+        window.onload = function (){
+            $.ajax({
+                type: "post",
+                dataType: "json",
+                contentType: "application/x-www-form-urlencoded",
+                url: "/wx/getPreAuth",
+                success: function (data) {
+                    console.info(data.result)
+                    $("#getPreAuth").attr("href",data.result);
+                }
+            });
+        };
+    </script>
+
+</div>
+</body>
+</html>

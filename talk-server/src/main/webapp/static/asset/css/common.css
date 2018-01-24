@@ -1,0 +1,271 @@
+@charset "utf-8";
+/*  @description: 电子券核销一期  公共样式
+*   @author: jiangfeng  
+*   @update: jiangfeng (2015-06-29) */
+
+html{
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+body{
+    font-family:"Microsoft YaHei";
+    width:640px;
+    margin: 0 auto;
+    overflow-x: hidden;
+    color:#000;
+    -moz-text-size-adjust:none;
+    -webkit-text-size-adjust:none;
+    text-size-adjust:none;
+    font-size:30px;
+    -webkit-overflow-scrolling: touch; /* ios5+ */
+    transition:opacity 0.2s ease-out;
+}
+.pr{
+    position: relative;
+    z-index: 0;
+}
+.pa{
+    position: absolute;
+    z-index: 0;
+}
+.main{
+    width:100%;
+    min-width:320px;
+    margin:0 auto;
+    max-width:640px;
+}
+
+.hide{
+    opacity: 0;
+}
+.show{
+    opacity: 1;
+}
+
+.page-header{
+    height: 88px;
+    overflow: hidden;
+    background: #353b41;
+}
+
+.page-header h1{
+    margin: 24px 0 24px;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    font-size:34px;
+    text-align: center;
+}
+
+.page-header a{
+    position: absolute;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    font-size:24px;
+    color: #fff;
+    bottom: 24px;
+}
+.page-header a.icon-arrow-left{
+    left: 20px;
+}
+.page-header a.icon-arrow-left:before{
+    content: '';
+    display: inline-block;
+    width: 17px;
+    height: 32px;
+    overflow: hidden;
+    margin: 0 10px;
+    background: url(images/goBack.png) no-repeat scroll 0 0;
+    vertical-align: middle;
+}
+.page-header a.btn-right{
+    right: 20px;
+}
+
+.mask{
+    position: fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    background: #000000;
+    opacity:0;
+    z-index:-1;
+    transition:all 0.4s ease;
+}
+
+/* 弹层提示 start */
+.pop-layer{
+    position: fixed;
+    width: 520px;
+    height: 288px;
+    top:50%;
+    left:50%;
+    margin-top: -144px;
+    margin-left: -260px;
+    background: #fff;
+    overflow: hidden;
+    border-radius:10px;
+    opacity: 0;
+    z-index: -1;
+    transition:all 0.4s ease;
+}
+
+.pop-layer .pop-main{
+    height: 200px;
+    border-bottom: 1px solid #bababa;
+}
+
+.pop-layer .pop-tips{
+    width:520px;
+    height:200px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.pop-layer .pop-tips p{
+    text-align: center;;
+}
+
+.pop-layer .pop-tools{
+    display: -webkit-box;
+    height: 88px;
+}
+
+.pop-layer .pop-tools a.pop-btn{
+    display: block;
+    width: 100%;
+    height: 88px;
+    line-height: 88px;
+    color:#006fc3;
+    text-align: center;
+    -webkit-box-flex:1;
+}
+
+.pop-layer .pop-tools a.pop-btn:first-child{
+    border-right: 1px solid #bababa;
+}
+.pop-layer .pop-tools a.pop-btn:last-child{
+    border-right: none;
+}
+.p-show{
+    opacity: 1;
+    z-index: 10;
+}
+.m-show{
+    opacity: 0.4;
+    z-index: 9;
+}
+/* 弹层提示 end */
+
+/* 弹层加载中 */
+.pop-loading{
+    position: fixed;
+    width: 140px;
+    height: 140px;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    margin-top: -70px;
+    margin-left: -70px;
+    border-radius: 4px;
+}
+.pop-loading:before{
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background: #000;
+    opacity: 0.65;
+    z-index: -1;
+}
+.pop-loading span{
+    display: block;
+    margin-top: 84px;
+    height: 40px;
+    line-height: 40px;
+    font-size:24px;
+    text-align: center;
+    color: #fff;
+}
+.pop-loading:after{
+    position: absolute;
+    display: block;
+    width:50px;
+    height:50px;
+    left: 50%;
+    top: 25px;
+    margin-left: -25px;
+    content: '';
+    background: url(images/loading.gif) scroll no-repeat;
+    background-size: cover;
+    z-index: 1;
+}
+
+/* 错误、404页面样式 start */
+.error-page{
+    position: absolute;
+    width: 100%;
+    height: 320px;
+    top: 50%;
+    text-align: center;
+    left: 0;
+    margin-top: -160px;
+}
+.error-page h2{
+    font-size: 30px;
+    color: #333;
+}
+.error-page p {
+    font-size: 24px;
+    color: #999;
+}
+.noFoundPage:before,.errorPage:before{
+    content: '';
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 0 auto;
+    background: url(images/error.png) no-repeat scroll 0 0;
+}
+.errorPage:before{
+    background-position: 0 -200px;
+}
+/* 错误、404页面样式 end */
+
+/* 不可点击 flag样式 */
+.get_code,.event-unclick{
+	background-color:#b1ddf2 !important;
+}
+
+/* 退款相关 */
+.about-refund{
+    height: 24px;
+    font-size: 24px;
+    margin:40px 0; 
+}
+.about-refund span{
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    padding-left:40px; 
+    font-size: 24px;
+    margin-right: 50px;
+    background: url(images/icon.png) no-repeat scroll 0 0;
+}
+.about-refund span.support{
+    color: #a4c25d;
+    background-position: -64px -24px;
+}
+.about-refund span.nonsupport{
+    color: #e83d3a;
+    background-position: -88px 0;
+}
