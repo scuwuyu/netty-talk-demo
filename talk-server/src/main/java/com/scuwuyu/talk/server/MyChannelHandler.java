@@ -1,11 +1,9 @@
 package com.scuwuyu.talk.server;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.codec.http.HttpObject;
+import io.netty.handler.codec.http.HttpRequest;
 
 import java.nio.charset.Charset;
 
@@ -15,10 +13,16 @@ import java.nio.charset.Charset;
 public class MyChannelHandler extends SimpleChannelInboundHandler<HttpObject> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, HttpObject msg) throws Exception {
+        if (msg instanceof HttpRequest){
+//            ByteBuf byteBuf = Unpooled.copiedBuffer("hello wuyu", Charset.forName("utf8"));
 
-        ByteBuf byteBuf = Unpooled.copiedBuffer("hello wuyu", Charset.forName("utf8"));
+            ctx.writeAndFlush("hello wuyu");
+        }
+    }
 
-        Channel channel = ctx.channel();
-        channel.writeAndFlush(byteBuf);
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("connect finish");
+        super.channelActive(ctx);
     }
 }

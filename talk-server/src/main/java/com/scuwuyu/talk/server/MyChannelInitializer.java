@@ -1,20 +1,17 @@
 package com.scuwuyu.talk.server;
 
-import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
-import io.netty.handler.codec.http.HttpServerCodec;
+import io.netty.channel.socket.SocketChannel;
 
 /**
  * Created by 吴宇 on 2018-01-24.
  */
-public class MyChannelInitializer extends ChannelInitializer {
+public class MyChannelInitializer extends ChannelInitializer<SocketChannel> {
     @Override
-    protected void initChannel(Channel ch) throws Exception {
+    protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline channelPipeline = ch.pipeline();
 
-        channelPipeline.addLast("httpServerCodec",new HttpServerCodec());
-
-        channelPipeline.addLast(new MyChannelHandler());
+        channelPipeline.addLast("my",new MyChannelInboundHandlerAdapter());
     }
 }

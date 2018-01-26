@@ -2,6 +2,7 @@ package com.scuwuyu.talk.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -18,9 +19,11 @@ public class ServerSide {
         try{
             ServerBootstrap bootstrap = new ServerBootstrap();
             bootstrap.group(bossGroup,workerGroup).channel(NioServerSocketChannel.class)
-                    .childHandler(new MyChannelInitializer());
+                    .childHandler(new MyChannelInitializer())
+                    .option(ChannelOption.SO_BACKLOG,1024)
+                    .childOption(ChannelOption.SO_KEEPALIVE,true);
 
-            ChannelFuture channelFuture = bootstrap.bind(8093).sync();
+            ChannelFuture channelFuture = bootstrap.bind(8033).sync();
 
             channelFuture.channel().closeFuture().sync();
         }finally {
