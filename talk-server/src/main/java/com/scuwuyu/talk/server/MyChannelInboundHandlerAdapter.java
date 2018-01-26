@@ -17,6 +17,7 @@ public class MyChannelInboundHandlerAdapter extends ChannelInboundHandlerAdapter
 
         ctx.writeAndFlush(byteBuf);
         ctx.close();
+        //tes
 
 //        ReferenceCountUtil.release(byteBuf);
 //        ByteBuf byteBuf = (ByteBuf)msg;
