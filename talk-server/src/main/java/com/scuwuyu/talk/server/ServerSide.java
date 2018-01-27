@@ -19,7 +19,7 @@ public class ServerSide {
         try{
             ServerBootstrap bootstrap = new ServerBootstrap();
             bootstrap.group(bossGroup,workerGroup).channel(NioServerSocketChannel.class)
-                    .childHandler(new MyChannelInitializer())
+                    .childHandler(new HelloChannelInitializer())
                     .option(ChannelOption.SO_BACKLOG,1024)
                     .childOption(ChannelOption.SO_KEEPALIVE,true);
 
