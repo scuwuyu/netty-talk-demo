@@ -1,4 +1,4 @@
-package com.scuwuyu.talk.test;
+package com.scuwuyu.talk.test.aop;
 
 /**
  * Created by wuyu on 2018/1/25.
