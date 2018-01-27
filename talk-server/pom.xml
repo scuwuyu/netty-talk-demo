@@ -77,7 +77,12 @@
             <artifactId>netty-all</artifactId>
             <version>4.0.29.Final</version>
         </dependency>
-
+        <!-- cglib -->
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.1</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>talk-server</finalName>

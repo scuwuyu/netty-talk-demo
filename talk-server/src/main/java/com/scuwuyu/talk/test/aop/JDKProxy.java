@@ -1,7 +1,7 @@
 package com.scuwuyu.talk.test.aop;
 
 import com.scuwuyu.talk.test.User;
-import com.scuwuyu.talk.test.service.UserServerImpl;
+import com.scuwuyu.talk.test.service.impl.UserServiceImpl;
 import com.scuwuyu.talk.test.service.UserService;
 
 import java.lang.reflect.InvocationHandler;
@@ -30,12 +30,13 @@ public class JDKProxy implements InvocationHandler {
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 
         System.out.println("参数="+args);
+        System.out.println("type="+args[0].getClass().getName());
 
         return method.invoke(target,args);
     }
 
     public static void main(String[] args) {
-        UserService userService = new UserServerImpl();
+        UserService userService = new UserServiceImpl();
         JDKProxy proxy = new JDKProxy(userService);
         UserService userProxy = (UserService)proxy.getProxy();
 
