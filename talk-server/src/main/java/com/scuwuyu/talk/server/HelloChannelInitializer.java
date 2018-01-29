@@ -24,5 +24,8 @@ public class HelloChannelInitializer extends ChannelInitializer<SocketChannel> {
 
         // 自己的逻辑Handler
         channelPipeline.addLast("handler",new HelloChannelHandler());
+
+        channelPipeline.addLast("outboundhandler",new HelloOutboundHandler());
+
     }
 }

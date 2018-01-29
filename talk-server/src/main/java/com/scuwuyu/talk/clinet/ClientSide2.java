@@ -1,13 +1,10 @@
 package com.scuwuyu.talk.clinet;
 
-import com.scuwuyu.talk.entyties.MsgBody;
-import com.scuwuyu.talk.enums.ServerType;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -17,7 +14,7 @@ import java.util.Objects;
  * 聊天客户端
  * Created by wuyu on 2018/1/24.
  */
-public class ClientSide {
+public class ClientSide2 {
 
     public static void main(String[] args) throws Exception{
         EventLoopGroup loopGroup = new NioEventLoopGroup();
@@ -36,14 +33,11 @@ public class ClientSide {
 
             while (true){
                 String content = in.readLine();
-                if (StringUtils.isEmpty(content)){
+                if (Objects.isNull(content)){
                     continue;
                 }
-
-                MsgBody msgBody = new MsgBody(ServerType.CLIENT,content);
-
                 //之所以用\r\n结尾 是因为我们在handler中添加了 DelimiterBasedFrameDecoder 帧解码。
-                channel.writeAndFlush(msgBody+"\r\n");
+                channel.writeAndFlush(content+"\r\n");
 
             }
 

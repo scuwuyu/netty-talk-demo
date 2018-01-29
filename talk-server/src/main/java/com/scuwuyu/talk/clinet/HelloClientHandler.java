@@ -10,7 +10,10 @@ public class HelloClientHandler extends SimpleChannelInboundHandler<String> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-        ClientPrintUtil.printWithNameAndDate(msg);
+        System.out.println(msg);
+        if (!msg.contains("已读")){
+            ctx.writeAndFlush("已读\n");
+        }
 
     }
 
@@ -24,5 +27,11 @@ public class HelloClientHandler extends SimpleChannelInboundHandler<String> {
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
 //        System.out.println("Client close");
         super.channelInactive(ctx);
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        System.out.println(ctx.channel().remoteAddress()+"server close connect");
+//        super.exceptionCaught(ctx, cause);
     }
 }
