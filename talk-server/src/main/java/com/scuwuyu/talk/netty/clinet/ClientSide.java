@@ -1,9 +1,10 @@
-package com.scuwuyu.talk.clinet;
+package com.scuwuyu.talk.netty.clinet;
 
-import com.scuwuyu.talk.entyties.MsgBody;
 import com.scuwuyu.talk.enums.ServerType;
+import com.scuwuyu.talk.netty.entyties.MsgBody;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
@@ -11,7 +12,6 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Objects;
 
 /**
  * 聊天客户端
@@ -40,10 +40,11 @@ public class ClientSide {
                     continue;
                 }
 
-                MsgBody msgBody = new MsgBody(ServerType.CLIENT,content);
+                //MsgBody msgBody = new MsgBody(ServerType.CLIENT,content);
+
 
                 //之所以用\r\n结尾 是因为我们在handler中添加了 DelimiterBasedFrameDecoder 帧解码。
-                channel.writeAndFlush(msgBody+"\r\n");
+                channel.writeAndFlush(content+"\r\n");
 
             }
 

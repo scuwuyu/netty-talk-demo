@@ -1,6 +1,6 @@
-package com.scuwuyu.talk.server;
+package com.scuwuyu.talk.netty.server;
 
-import com.scuwuyu.talk.entyties.MsgBody;
+import com.scuwuyu.talk.netty.entyties.MsgBody;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelOutboundHandlerAdapter;
 import io.netty.channel.ChannelPromise;

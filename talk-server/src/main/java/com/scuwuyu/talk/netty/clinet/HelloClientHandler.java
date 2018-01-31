@@ -1,4 +1,4 @@
-package com.scuwuyu.talk.clinet;
+package com.scuwuyu.talk.netty.clinet;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;

@@ -1,4 +1,4 @@
-package com.scuwuyu.talk.clinet;
+package com.scuwuyu.talk.netty.clinet;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;

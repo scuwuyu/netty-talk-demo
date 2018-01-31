@@ -6,6 +6,12 @@ package com.scuwuyu.talk.test;
 public class TestUtils {
 
     public static void main(String[] args) {
-        System.out.println(Integer.toBinaryString(8192));
+
+    }
+
+
+    public void say(){
+        TestUtils.this.say();
+        System.out.println("say hello");
     }
 }

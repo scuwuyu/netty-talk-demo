@@ -1,4 +1,4 @@
-package com.scuwuyu.talk.entyties;
+package com.scuwuyu.talk.netty.entyties;
 
 import com.scuwuyu.talk.enums.ServerType;
 import com.scuwuyu.talk.util.DateUtils;
@@ -12,9 +12,15 @@ import java.util.Date;
 public class MsgBody implements Serializable{
     private String name;
 
+    /** 发送消息userid*/
+    private Integer fromUserId;
+
+    /** 接受消息userid*/
+    private Integer toUserId;
+
     private String msg;
 
-    private Date sendTime;
+    private Date sendTime = DateUtils.getNow();
 
     public MsgBody(ServerType type, String msg) {
         this.name = type.getName();
@@ -46,8 +52,19 @@ public class MsgBody implements Serializable{
         this.sendTime = sendTime;
     }
 
-    @Override
-    public String toString() {
-        return this.name+" "+ DateUtils.format(this.sendTime)+": "+this.msg;
+    public Integer getFromUserId() {
+        return fromUserId;
+    }
+
+    public void setFromUserId(Integer fromUserId) {
+        this.fromUserId = fromUserId;
+    }
+
+    public Integer getToUserId() {
+        return toUserId;
+    }
+
+    public void setToUserId(Integer toUserId) {
+        this.toUserId = toUserId;
     }
 }

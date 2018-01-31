@@ -1,5 +1,6 @@
-package com.scuwuyu.talk.server;
+package com.scuwuyu.talk.netty.server;
 
+import com.scuwuyu.talk.netty.common.OnlineClient;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import org.slf4j.Logger;
@@ -15,29 +16,32 @@ public class HelloChannelHandler extends SimpleChannelInboundHandler<String> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
         // 收到消息直接打印输出
-        System.out.println(msg);
-        if (!msg.contains("已读")){
-            ctx.writeAndFlush("已读!\n");
+        boolean success = OnlineClient.sendMsg(ctx.channel(),msg);
+
+        if(!success&&!msg.contains("已读")){
+            ctx.writeAndFlush("没有客户端接收!\n");
         }
+
     }
 
     /** channel active method */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        ServerSide.mapCache.put(ctx.channel().remoteAddress().toString(),ctx.channel());
+        OnlineClient.regist(ctx.channel(),ctx);
 
         super.channelActive(ctx);
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
-        ServerSide.mapCache.remove(ctx.channel().remoteAddress().toString());
+        OnlineClient.unRegist(ctx.channel());
         super.channelInactive(ctx);
     }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         System.out.println(ctx.channel().remoteAddress() + "关闭了链接");
-        //super.exceptionCaught(ctx, cause);
+        OnlineClient.unRegist(ctx.channel());
+//        super.exceptionCaught(ctx, cause);
     }
 }

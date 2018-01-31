@@ -1,4 +1,4 @@
-package com.scuwuyu.talk.server;
+package com.scuwuyu.talk.netty.server;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
