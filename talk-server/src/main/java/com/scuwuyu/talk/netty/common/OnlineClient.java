@@ -1,6 +1,5 @@
 package com.scuwuyu.talk.netty.common;
 
-import com.scuwuyu.talk.netty.entyties.MsgBody;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 

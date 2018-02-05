@@ -1,10 +1,7 @@
 package com.scuwuyu.talk.netty.clinet;
 
-import com.scuwuyu.talk.enums.ServerType;
-import com.scuwuyu.talk.netty.entyties.MsgBody;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
-import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;

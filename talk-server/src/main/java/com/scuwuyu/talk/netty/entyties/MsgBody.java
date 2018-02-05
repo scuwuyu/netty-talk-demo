@@ -1,6 +1,5 @@
 package com.scuwuyu.talk.netty.entyties;
 
-import com.scuwuyu.talk.enums.ServerType;
 import com.scuwuyu.talk.util.DateUtils;
 
 import java.io.Serializable;
@@ -22,8 +21,7 @@ public class MsgBody implements Serializable{
 
     private Date sendTime = DateUtils.getNow();
 
-    public MsgBody(ServerType type, String msg) {
-        this.name = type.getName();
+    public MsgBody(String msg) {
         this.msg = msg;
         this.sendTime = DateUtils.getNow();
     }

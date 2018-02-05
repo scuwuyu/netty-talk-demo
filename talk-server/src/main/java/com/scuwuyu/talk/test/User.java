@@ -9,7 +9,9 @@ public class User {
         this.name = name;
     }
 
-    private String name;
+    private volatile String name;
+
+    private transient Integer age;
 
     public String getName() {
         return name;
@@ -19,10 +21,11 @@ public class User {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                '}';
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 }
