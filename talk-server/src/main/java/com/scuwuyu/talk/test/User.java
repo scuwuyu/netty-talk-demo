@@ -9,7 +9,7 @@ public class User {
         this.name = name;
     }
 
-    private volatile String name;
+    private volatile transient String name;
 
     private transient Integer age;
 

@@ -1,5 +1,6 @@
 package com.scuwuyu.talk.test;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -8,7 +9,8 @@ import java.util.Map;
 public class MapTest {
 
     public static void main(String[] args) {
-//        Map<String,Object> map = {"name":"wuyu","age":12}
-        ;
+        HashMap<String,Object> map = new HashMap<String, Object>();
+
+        map.put("1",2);
     }
 }
